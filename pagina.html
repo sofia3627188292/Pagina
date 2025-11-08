@@ -59,6 +59,9 @@
     .muted{color:var(--muted)}
     .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 28px); box-shadow: var(--shadow)}
     .small{font-size:.95rem}
+    main.container > section + section {
+    margin-top: clamp(24px, 4vw, 40px);
+    }
 
     /* ====== Header pegajoso ====== */
     .site-header{position:sticky; top:0; z-index:50; background: color-mix(in srgb, var(--surface) 76%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line)}
@@ -326,8 +329,8 @@
           </figure>
         </div>
       </section>
-
-      <section id="usos" class="card prose" data-animate>
+    </section>
+    <section id="usos" class="card prose" data-animate>
         <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v4H3zM3 9h18v12H3z"/></svg>Casos de uso</h3>
         <ul>
           <li><strong>Salud:</strong> diagnósticos asistidos por IA, telemedicina y terapias génicas.</li>
@@ -338,7 +341,6 @@
           <li><strong>Arte y entretenimiento:</strong> creación asistida por IA y streaming global.</li>
         </ul>
       </section>
-    </section>
 
     <!-- ====== INGENIERÍA ====== -->
     <section id="ingenieria" class="card prose" data-animate>
@@ -359,51 +361,6 @@
         </div>
       </div>
       <p class="muted">Consecuencias prácticas: estándares de ciberseguridad por defecto, diseño sostenible, ingeniería basada en datos y competencias interdisciplinares.</p>
-      <div class="stack">
-        <span class="badge" title="Paleta">🎨 Paleta: Indigo–Cyan con acentos Rose</span>
-        <span class="badge" title="Atajo">⌨️ Atajo tema: <kbd class="kbd">T</kbd></span>
-      </div>
-    </section>
-
-    <!-- ====== GALERÍA ====== -->
-    <section id="galeria" class="card" aria-labelledby="h-galeria" data-animate>
-      <h3 id="h-galeria" class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg>Galería visual</h3>
-      <p class="muted">Imágenes y esquemas ilustrativos.</p>
-      <div class="gallery" id="gallery">
-        <figure>
-          <img src="assets/hero-photo.svg" alt="Ilustración principal" loading="lazy" />
-          <figcaption>Ilustración general</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/gallery1.svg" alt="Conectividad e internet" loading="lazy" />
-          <figcaption>Conectividad</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/gallery2.svg" alt="Transición energética" loading="lazy" />
-          <figcaption>Energía</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/smartphone.svg" alt="Smartphone" loading="lazy" />
-          <figcaption>Movilidad</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/ai.svg" alt="Inteligencia artificial" loading="lazy" />
-          <figcaption>IA</figcaption>
-        </figure>
-        <!-- Nuevas imágenes reales libres → reemplaza src por tus archivos o URLs libres de uso -->
-        <figure>
-          <img src="assets/renewables.jpg" alt="Parque solar y eólico" loading="lazy" />
-          <figcaption>Renovables</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/industry4.jpg" alt="Robots industriales y sensores" loading="lazy" />
-          <figcaption>Industria 4.0</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/bioengineering.jpg" alt="Laboratorio de biotecnología" loading="lazy" />
-          <figcaption>Bioingeniería</figcaption>
-        </figure>
-      </div>
     </section>
 
     <!-- ====== IMPACTO Y RETOS ====== -->
