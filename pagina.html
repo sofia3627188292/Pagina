@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siglo XXI — Panorama, inventos, impacto y retos</title>
+  <meta name="description" content="Resumen claro y visual del siglo XXI: línea del tiempo, inventos, casos de uso, impacto social y retos éticos. Incluye modo oscuro, accesibilidad y animaciones suaves." />
+  <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1322" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Siglo XXI — Panorama, inventos, impacto y retos" />
+  <meta property="og:description" content="Línea del tiempo por décadas, inventos destacados, casos de uso y grandes retos del siglo XXI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230ea5e9'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='56' fill='white' font-family='system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif'%3E21%3C/text%3E%3C/svg%3E" />
+  <style>
+    /* ====== Reset y sistema de diseño ====== */
+    :root{
+      /* Paleta Tropical Neon */
+      --bg: #0a0a0f;
+      --surface: #0f1226;
+      --text: #eaf2ff;
+      --muted: #a8b3cf;
+      --line: #22263d;
+      --brand: #ff6b6b;       /* coral */
+      --brand-2:#7c5cff;      /* violeta eléctrico */
+      --accent:#22d3ee;       /* cian vivo */
+      --accent-2:#f59e0b;     /* ámbar */
+      --ok: #34d399;
+      --warn: #f59e0b;
+      --err: #ef4444;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --container: clamp(280px, 90vw, 1200px);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        /* Mantén misma paleta en dark, mejora contraste */
+        --bg: #06070d;
+        --surface: #0b0e1d;
+        --text: #eef2ff;
+        --muted: #b8c0dd;
+        --line: #1a1f33;
+        --shadow: 0 12px 36px rgba(0,0,0,.6);
+      }
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--text); background:
+      radial-gradient(1200px 800px at 0% 0%, rgba(124,92,255,.25), transparent 55%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(34,211,238,.2), transparent 55%),
+      radial-gradient(1000px 700px at 100% 100%, rgba(245,158,11,.18), transparent 55%),
+      #090b14;
+    }
+    img,svg{max-width:100%; height:auto}
+    a{color:var(--brand); text-decoration: none}
+    a:focus-visible, button:focus-visible{outline: 3px solid var(--brand); outline-offset:3px; border-radius:8px}
+    .container{width:var(--container); margin-inline:auto; padding-inline: 20px}
+    .muted{color:var(--muted)}
+    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 28px); box-shadow: var(--shadow)}
+    .small{font-size:.95rem}
+
+    /* ====== Header pegajoso ====== */
+    .site-header{position:sticky; top:0; z-index:50; background: color-mix(in srgb, var(--surface) 76%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line)}
+    .header-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px}
+    .site-title{font-size: clamp(20px, 2.4vw, 28px); margin:0}
+    .main-nav{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+    .main-nav a{padding:8px 12px; border-radius:10px; color:var(--text)}
+    .main-nav a.active{background: color-mix(in srgb, var(--brand) 10%, transparent)}
+
+    /* ====== Botones ====== */
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border:1px solid var(--line); background:var(--surface); color:var(--text); padding:.7rem 1rem; border-radius:12px; font-weight:600; transition: transform .1s ease, background .2s ease, border-color .2s ease}
+    .btn:hover{transform: translateY(-1px)}
+    .btn.cta{background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; border-color: transparent; box-shadow:0 10px 30px rgba(124,92,255,.25)}
+    .btn.secondary{background:transparent}
+    .btn.small{padding:.5rem .75rem; font-weight:600}
+
+    /* ====== Hero ====== */
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap: clamp(16px, 3vw, 40px); align-items:center; padding-block: clamp(24px, 6vw, 72px)}
+    .hero .hero-content h2{font-size: clamp(28px, 4vw, 44px); line-height:1.1; margin:0 0 10px}
+    .hero .cta-group{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .hero-illustration{place-self:center; filter: drop-shadow(0 10px 26px rgba(2,6,23,.15))}
+
+    /* ====== Títulos de sección ====== */
+    .section-title{display:flex; align-items:center; gap:.6rem; margin:0 0 10px; font-size: clamp(18px, 2vw, 22px);
+      background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .section-title svg{width:22px; height:22px; fill: currentColor}
+
+    /* ====== Línea del tiempo ====== */
+    .timeline{display:grid; gap:18px}
+    .timeline__rail{position:relative; overflow:auto hidden; padding-bottom: 8px}
+    .timeline__items{display:grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr); gap:16px}
+    .timeline__card{background: var(--surface); border:1px solid var(--line); border-radius: var(--radius-sm); padding:16px; box-shadow: var(--shadow)}
+    .timeline__card h4{margin:0 0 6px}
+    .timeline__progress{position:relative; height:4px; background:var(--line); border-radius:99px}
+    .timeline__bar{position:absolute; inset:0 auto 0 0; width:0%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius:inherit}
+
+    /* ====== Galería ====== */
+    .gallery{display:grid; grid-template-columns: repeat( auto-fit, minmax(160px, 1fr)); gap:10px}
+    .gallery figure{margin:0; position:relative}
+    .gallery img{display:block; width:100%; height:160px; object-fit:cover; border-radius:12px; border:1px solid var(--line)}
+    .gallery figcaption{position:absolute; inset:auto 8px 8px 8px; background: color-mix(in srgb, var(--surface) 80%, transparent); border:1px solid var(--line); border-radius:10px; padding:6px 8px; font-size:.8rem}
+
+    /* ====== Grid de tarjetas ====== */
+    .grid{display:grid; gap: clamp(12px, 2vw, 18px)}
+    @media (width>900px){
+      .grid.cols-2{grid-template-columns: 1fr 1fr}
+      .grid.cols-3{grid-template-columns: repeat(3,1fr)}
+    }
+
+    /* ====== Footer ====== */
+    .site-footer{margin-top: 32px; padding-block: 24px; border-top:1px solid var(--line); background: color-mix(in srgb, var(--surface) 92%, transparent)}
+
+    /* ====== Utilidades ====== */
+    .stack{display:grid; gap:12px}
+    .badge{display:inline-flex; align-items:center; gap:.5ch; background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--text); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:.8rem}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.9em; border:1px solid var(--line); background: color-mix(in srgb, var(--surface) 70%, transparent); border-radius:8px; padding:2px 6px}
+    .prose ul{margin:0; padding-left: 1.1rem}
+    .prose li{margin:.35rem 0}
+
+    /* ====== Mobile ====== */
+    @media (width<860px){
+      .hero{grid-template-columns:1fr}
+      .main-nav{overflow:auto hidden; padding-bottom:6px}
+    }
+
+    /* ====== Animaciones de aparición ====== */
+    [data-animate]{opacity:0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease}
+    [data-animate].in{opacity:1; transform:none}
+
+    /* ====== Botón flontante y volver arriba ====== */
+    .fab, .to-top{position:fixed; right:16px; z-index:60; border-radius:999px; box-shadow: var(--shadow)}
+    .fab{bottom:16px; padding:12px; background:linear-gradient(135deg, #25D366, #128C7E); border:0}
+    .fab svg{display:block; width:26px; height:26px}
+    .to-top{bottom:86px; display:none; padding:10px 12px; background: var(--surface); border:1px solid var(--line)}
+    .to-top.show{display:inline-flex}
+
+    /* ====== Impresión ====== */
+    @media print{
+      .site-header, .fab, .to-top{display:none}
+      .card{box-shadow:none}
+      a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.9em; color:var(--muted)}
+    }
+      /* ====== Paleta creativa (Aurora Circuit) ====== */
+    :root{
+      --brand: #4f46e5;       /* Indigo-600 */
+      --brand-2:#06b6d4;      /* Cyan-500 */
+      --accent:#f43f5e;       /* Rose-500 */
+      --glow: color-mix(in srgb, var(--brand) 40%, var(--brand-2) 60%);
+    }
+      /* Inventos grid y tarjetas visuales */
+    .inventos-grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:16px}
+    .card--invento{padding:0; overflow:hidden; border:1px solid var(--line); background:linear-gradient(180deg, color-mix(in srgb, var(--brand-2) 12%, var(--surface)), var(--surface));}
+    .card--invento img{width:100%; height:150px; object-fit:cover; display:block}
+    .card--invento figcaption{padding:14px}
+    .card--invento h4{margin:0 0 6px}
+
+    /* Glow sutil en hero */
+    .hero{position:relative}
+    .hero::after{content:""; position:absolute; inset:-20px; pointer-events:none; border-radius:24px; background: radial-gradient(600px 240px at 20% 20%, color-mix(in srgb, var(--brand) 30%, transparent), transparent 70%)}
+  </style>
+</head>
+<body>
+  <a class="kbd" href="#intro" style="position:absolute;left:-9999px" id="skip">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <h1 class="site-title" aria-label="Siglo 21, página educativa">Siglo XXI</h1>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#intro">Inicio</a>
+        <a href="#linea">Línea del tiempo</a>
+        <a href="#inventos">Inventos</a>
+        <a href="#usos">Usos</a>
+        <a href="#ingenieria">Ingeniería</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#retos">Retos</a>
+        <a href="#referencias">Referencias</a>
+        <button id="themeToggle" class="btn small" type="button" aria-pressed="false" aria-label="Cambiar tema">Modo oscuro</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="content" tabindex="-1">
+    <!-- ====== HERO ====== -->
+    <section id="intro" class="hero card" data-animate>
+      <div class="hero-content">
+        <h2>Un vistazo al siglo XXI</h2>
+        <p>El siglo XXI se caracteriza por la aceleración tecnológica, la interconexión global y la urgencia climática. Este recurso resume lo esencial: por qué importa, los inventos clave, sus usos y los desafíos que seguimos afrontando.</p>
+        <p class="muted">Contenido educativo y resumido para estudiantes y público general.</p>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <!-- Ilustración SVG ligera -->
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración siglo 21" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.9" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="800" height="600" rx="20" fill="url(#g1)" opacity="0.06"/>
+          <g transform="translate(120,90) scale(0.9)">
+            <rect x="0" y="0" width="160" height="260" rx="18" fill="#fff" opacity="0.9"/>
+            <rect x="12" y="18" width="136" height="200" rx="8" fill="#0f1724" opacity="0.9"/>
+            <circle cx="80" cy="230" r="8" fill="#111827" />
+          </g>
+          <g transform="translate(360,60) scale(1)">
+            <ellipse cx="120" cy="160" rx="120" ry="60" fill="#fff" opacity="0.12"/>
+            <path d="M40 160 C80 110,160 110,200 160 C240 210,320 210,360 160" stroke="#fff" stroke-width="2" fill="none" opacity="0.18"/>
+          </g>
+          <g transform="translate(520,220)">
+            <circle cx="0" cy="0" r="34" fill="#fff" opacity="0.14"/>
+            <circle cx="0" cy="0" r="18" fill="#fff" opacity="0.22"/>
+            <path d="M-6 -6 L6 6 M6 -6 L-6 6" stroke="#fff" stroke-width="2" opacity="0.9"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ====== LÍNEA DEL TIEMPO ====== -->
+    <section id="linea" class="card stack" data-animate>
+      <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Línea del tiempo por décadas</h3>
+      <div class="timeline">
+        <div class="timeline__rail" id="rail" aria-label="Carrusel de décadas" tabindex="0">
+          <div class="timeline__items" id="timelineItems">
+            <article class="timeline__card" aria-label="2000s">
+              <h4>2000s</h4>
+              <p>Expansión de internet, smartphone moderno (iPhone 2007), redes sociales iniciales y primera ola de nube.</p>
+            </article>
+            <article class="timeline__card" aria-label="2010s">
+              <h4>2010s</h4>
+              <p>IA profunda gana impulso, adopción masiva de smartphones, streaming y e‑commerce a escala.</p>
+            </article>
+            <article class="timeline__card" aria-label="2020s">
+              <h4>2020s</h4>
+              <p>Pandemia acelera telemedicina y trabajo remoto; vacunas ARNm; renovables y modelos de IA avanzados.</p>
+            </article>
+          </div>
+        </div>
+        <div class="timeline__progress" aria-hidden="true"><div class="timeline__bar" id="timelineBar"></div></div>
+      </div>
+    </section>
+
+    <!-- ====== INVENTOS Y USOS ====== -->
+    <section aria-label="Inventos y usos">
+      <section id="inventos" class="card prose" data-animate>
+        <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a2 2 0 00-2 2v7a2 2 0 004 0V4a2 2 0 00-2-2zM6 8a2 2 0 100 4 2 2 0 000-4zm12 0a2 2 0 100 4 2 2 0 000-4z"/></svg>Inventos y avances</h3>
+        <div class="inventos-grid">
+          <figure class="card card--invento">
+            <img src="imgs/PATOS.jpeg" alt="Smartphone moderno" loading="lazy" />
+            <figcaption>
+              <h4>Smartphones</h4>
+              <p>Computación de bolsillo. Comunicación, cámaras, GPS y apps para banca, salud y logística.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="data:image/jpeg;base64,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" alt="Centro de datos y nube" loading="lazy" />
+            <figcaption>
+              <h4>Nube e internet rápido</h4>
+              <p>Streaming, colaboración global y servicios SaaS a gran escala.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/ai.jpg" alt="Representación de inteligencia artificial" loading="lazy" />
+            <figcaption>
+              <h4>Inteligencia artificial</h4>
+              <p>Visión, lenguaje y predicción con impacto transversal.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/mrna.jpg" alt="Vacuna ARNm" loading="lazy" />
+            <figcaption>
+              <h4>Vacunas ARNm</h4>
+              <p>Plataforma que aceleró la respuesta a COVID‑19 y abre terapias futuras.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/crispr.jpg" alt="CRISPR edición genética" loading="lazy" />
+            <figcaption>
+              <h4>CRISPR</h4>
+              <p>Edición precisa de ADN para salud y agricultura.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/ev.jpg" alt="Vehículo eléctrico y baterías" loading="lazy" />
+            <figcaption>
+              <h4>Vehículos eléctricos</h4>
+              <p>Baterías más capaces y adopción masiva en transporte.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/solar-wind.jpg" alt="Paneles solares y turbinas eólicas" loading="lazy" />
+            <figcaption>
+              <h4>Renovables</h4>
+              <p>Solar, eólica y almacenamiento para descarbonizar.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/blockchain.jpg" alt="Blockchain y contratos inteligentes" loading="lazy" />
+            <figcaption>
+              <h4>Blockchain</h4>
+              <p>Registros inmutables y nuevos modelos de confianza.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/3dprint.jpg" alt="Impresora 3D en acción" loading="lazy" />
+            <figcaption>
+              <h4>Impresión 3D</h4>
+              <p>Prototipado rápido y fabricación personalizada.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/quantum.jpg" alt="Procesador cuántico" loading="lazy" />
+            <figcaption>
+              <h4>Computación cuántica</h4>
+              <p>Exploración con potencial en ciertas optimizaciones.</p>
+            </figcaption>
+          </figure>
+          <figure class="card card--invento">
+            <img src="assets/inventos/social.jpg" alt="Redes sociales" loading="lazy" />
+            <figcaption>
+              <h4>Redes sociales</h4>
+              <p>Nuevos flujos de información, creación y negocio.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="usos" class="card prose" data-animate>
+        <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v4H3zM3 9h18v12H3z"/></svg>Casos de uso</h3>
+        <ul>
+          <li><strong>Salud:</strong> diagnósticos asistidos por IA, telemedicina y terapias génicas.</li>
+          <li><strong>Educación:</strong> MOOC, clases híbridas y personalización por datos.</li>
+          <li><strong>Transporte:</strong> navegación, vehículos eléctricos y logística optimizada.</li>
+          <li><strong>Economía y trabajo:</strong> e‑commerce, pagos digitales y trabajo remoto.</li>
+          <li><strong>Medio ambiente:</strong> monitoreo climático y redes de sensores.</li>
+          <li><strong>Arte y entretenimiento:</strong> creación asistida por IA y streaming global.</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- ====== INGENIERÍA ====== -->
+    <section id="ingenieria" class="card prose" data-animate>
+      <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>Importancia del siglo XXI en la ingeniería</h3>
+      <p>La ingeniería del siglo XXI es clave para alcanzar objetivos sociales y ambientales. La convergencia de <strong>IA</strong>, <strong>IoT</strong>, <strong>robótica</strong>, <strong>nube</strong> y <strong>energía limpia</strong> habilita soluciones escalables para salud, ciudades, industria y clima. La UNESCO subraya la contribución directa de la ingeniería a los <abbr title="Objetivos de Desarrollo Sostenible">ODS</abbr>; el Foro Económico Mundial describe la <em>Industria 4.0</em> como un cambio de fondo en cómo se diseña, fabrica y opera; y la IEA muestra una electrificación acelerada con renovables que exige nuevas redes, almacenamiento y electrónica de potencia.</p>
+      <div class="grid cols-3">
+        <div class="card" style="border-style:dashed">
+          <h4>Arquitecturas digitales</h4>
+          <p>De <strong>edge</strong> a <strong>cloud</strong>: IA en tiempo real, 5G/6G y gemelos digitales para mantenimiento predictivo.</p>
+        </div>
+        <div class="card" style="border-style:dashed">
+          <h4>Energía y potencia</h4>
+          <p>Integración de solar/eólica, <strong>baterías</strong>, convertidores de alto rendimiento y control inteligente de redes.</p>
+        </div>
+        <div class="card" style="border-style:dashed">
+          <h4>Bioingeniería</h4>
+          <p>Plataformas <strong>ARNm</strong>, <strong>CRISPR</strong> y fabricación aditiva médica aceleran diagnóstico y terapias.</p>
+        </div>
+      </div>
+      <p class="muted">Consecuencias prácticas: estándares de ciberseguridad por defecto, diseño sostenible, ingeniería basada en datos y competencias interdisciplinares.</p>
+      <div class="stack">
+        <span class="badge" title="Paleta">🎨 Paleta: Indigo–Cyan con acentos Rose</span>
+        <span class="badge" title="Atajo">⌨️ Atajo tema: <kbd class="kbd">T</kbd></span>
+      </div>
+    </section>
+
+    <!-- ====== GALERÍA ====== -->
+    <section id="galeria" class="card" aria-labelledby="h-galeria" data-animate>
+      <h3 id="h-galeria" class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg>Galería visual</h3>
+      <p class="muted">Imágenes y esquemas ilustrativos.</p>
+      <div class="gallery" id="gallery">
+        <figure>
+          <img src="assets/hero-photo.svg" alt="Ilustración principal" loading="lazy" />
+          <figcaption>Ilustración general</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/gallery1.svg" alt="Conectividad e internet" loading="lazy" />
+          <figcaption>Conectividad</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/gallery2.svg" alt="Transición energética" loading="lazy" />
+          <figcaption>Energía</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/smartphone.svg" alt="Smartphone" loading="lazy" />
+          <figcaption>Movilidad</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ai.svg" alt="Inteligencia artificial" loading="lazy" />
+          <figcaption>IA</figcaption>
+        </figure>
+        <!-- Nuevas imágenes reales libres → reemplaza src por tus archivos o URLs libres de uso -->
+        <figure>
+          <img src="assets/renewables.jpg" alt="Parque solar y eólico" loading="lazy" />
+          <figcaption>Renovables</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/industry4.jpg" alt="Robots industriales y sensores" loading="lazy" />
+          <figcaption>Industria 4.0</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/bioengineering.jpg" alt="Laboratorio de biotecnología" loading="lazy" />
+          <figcaption>Bioingeniería</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ====== IMPACTO Y RETOS ====== -->
+    <section class="grid cols-2" aria-label="Impacto y retos">
+      <section id="impacto" class="card prose" data-animate>
+        <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3z"/></svg>Impacto social y económico</h3>
+        <ul>
+          <li>Nuevas industrias (software, datos, energías limpias) y automatización de roles tradicionales.</li>
+          <li>Conectividad global que acelera innovación y también la desinformación.</li>
+          <li>Mejoras sanitarias y mayor esperanza de vida, con desigualdades persistentes.</li>
+        </ul>
+      </section>
+
+      <section id="retos" class="card prose" data-animate>
+        <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>Retos, ética y sostenibilidad</h3>
+        <ul>
+          <li><strong>Privacidad y datos:</strong> gobernanza del dato personal.</li>
+          <li><strong>Ética en IA:</strong> sesgos, explicabilidad y responsabilidad.</li>
+          <li><strong>Brecha digital:</strong> acceso, infraestructura y habilidades.</li>
+          <li><strong>Clima:</strong> mitigación y adaptación con tecnologías limpias.</li>
+          <li><strong>Ciberseguridad:</strong> resiliencia, regulación y cooperación.</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- ====== CONCLUSIÓN ====== -->
+    <section id="conclusion" class="card prose" data-animate>
+      <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>Conclusión</h3>
+      <p>El siglo XXI condensa oportunidades y responsabilidades. Las tecnologías mejoran vidas si van acompañadas de políticas públicas, educación y acceso equitativo. Comprender estos cambios permite participar mejor en decisiones que moldean el futuro.</p>
+    </section>
+
+    <!-- ====== REFERENCIAS ====== -->
+    <section id="referencias" class="card small prose" data-animate>
+      <h3 class="section-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>Referencias y recursos</h3>
+      <details open>
+        <summary><strong>Lista verificada</strong></summary>
+        <ul>
+          <li><a href="https://www.unesco.org/en/basic-sciences-engineering/report" target="_blank" rel="noopener">UNESCO — Engineering for Sustainable Development (2021)</a></li>
+          <li><a href="https://www.iea.org/reports/renewables-2024" target="_blank" rel="noopener">IEA — Renewables 2024</a></li>
+          <li><a href="https://www.weforum.org/focus/fourth-industrial-revolution/" target="_blank" rel="noopener">WEF — Cuarta Revolución Industrial</a></li>
+          <li><a href="https://www.nobelprize.org/prizes/chemistry/2020/popular-information/" target="_blank" rel="noopener">Nobel 2020 — CRISPR/Cas9</a></li>
+          <li><a href="https://www.who.int/news/item/29-06-2020-covidtimeline" target="_blank" rel="noopener">OMS — Cronología COVID‑19</a></li>
+        </ul>
+      </details>
+      <p class="muted">Recurso informativo. Verifica fechas y versiones al citar.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <small>© Siglo XXI · Página educativa. Construida con accesibilidad, rendimiento y modo oscuro.</small>
+    </div>
+  </footer>
+
+  <script>
+    // ====== Tema: respeta preferencia del sistema y guarda elección ======
+    const toggleBtn = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const applyTheme = (mode) => {
+      document.documentElement.dataset.theme = mode; // Hook por si se requiere
+      toggleBtn.setAttribute('aria-pressed', mode === 'dark');
+      toggleBtn.textContent = mode === 'dark' ? 'Modo claro' : 'Modo oscuro';
+      // Sin variables adicionales: usamos prefers-color-scheme y estilos neutros
+    };
+    const saved = localStorage.getItem('theme');
+    const initial = saved || (prefersDark.matches ? 'dark' : 'light');
+    applyTheme(initial);
+    toggleBtn?.addEventListener('click', () => {
+      const next = (toggleBtn.getAttribute('aria-pressed') === 'true') ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+    prefersDark.addEventListener('change', (e)=>{
+      if(!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
+    });
+
+    // ====== Scrollspy simple: resalta enlace activo ======
+    const navLinks = Array.from(document.querySelectorAll('.main-nav a[href^="#"]'));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const idx = sections.indexOf(entry.target);
+        if(idx>-1){
+          const link = navLinks[idx];
+          if(entry.isIntersecting){ link.classList.add('active'); }
+          else{ link.classList.remove('active'); }
+        }
+      })
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0});
+    sections.forEach(s=> spy.observe(s));
+
+    // ====== Aparición suave de secciones ======
+    const fx = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); fx.unobserve(e.target); } });
+    }, {threshold:.15});
+    document.querySelectorAll('[data-animate]').forEach(el=> fx.observe(el));
+
+    // ====== Progreso horizontal de la línea del tiempo ======
+    const rail = document.getElementById('rail');
+    const bar = document.getElementById('timelineBar');
+    function updateBar(){
+      const max = rail.scrollWidth - rail.clientWidth;
+      const pct = max>0 ? Math.min(1, rail.scrollLeft / max) : 0;
+      bar.style.width = (pct*100).toFixed(1) + '%';
+    }
+    rail?.addEventListener('scroll', updateBar, {passive:true});
+    window.addEventListener('resize', updateBar);
+    updateBar();
+
+    // ====== Modal ligero para la galería ======
+    const gallery = document.getElementById('gallery');
+    const modal = document.createElement('dialog');
+    modal.setAttribute('aria-label','Visor de imagen');
+    modal.innerHTML = '<button id="closeModal" class="btn small" style="position:absolute;right:12px;top:12px">Cerrar</button><img alt="" style="max-width:min(92vw,1000px); max-height:80vh; border-radius:12px; border:1px solid var(--line)" />';
+    document.body.appendChild(modal);
+    gallery?.addEventListener('click', (e)=>{
+      const img = e.target.closest('img');
+      if(!img) return;
+      const big = modal.querySelector('img');
+      big.src = img.src; big.alt = img.alt; 
+      if(typeof modal.showModal === 'function') modal.showModal();
+      else modal.setAttribute('open','');
+    });
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.close?.(); });
+    modal.querySelector('#closeModal')?.addEventListener('click', ()=> modal.close?.());
+
+    // ====== Volver arriba ======
+    const toTop = document.getElementById('toTop');
+    const topObs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        toTop.classList.toggle('show', !entry.isIntersecting);
+      })
+    });
+    topObs.observe(document.querySelector('header'));
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // ====== Atajos ======
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='t'){ toggleBtn?.click(); }
+      if(e.key.toLowerCase()==='g' && e.altKey){ document.getElementById('galeria')?.scrollIntoView({behavior:'smooth'}); }
+    });
+  </script>
+
+  <!-- Datos estructurados mínimos -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Siglo XXI — Recurso educativo",
+    "inLanguage": "es",
+    "url": "",
+    "description": "Resumen del siglo XXI con línea del tiempo, inventos, casos de uso, impacto y retos."
+  }
+  </script>
+</body>
+</html>
